@@ -3,7 +3,7 @@ $biodata = array(
   'Nama' => 'Fanny Fietya Herlambang',
   'Kelas' => 'MI20B',
   'Jurusan' => 'Manajemen Informatika',
-  'NO HP' => '08122145678',
+  'NO HP' => '08122145678'
 );
 ?>
 <!DOCTYPE html>
