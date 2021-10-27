@@ -93,7 +93,8 @@ if ($isi['jenis_surat'] == 1) {
       `ttd_menyetujui`='$ttd_menyetujui'
       where `id` = '$id'");
 
-      echo "Surat updated successfully, <a href='view2.php'>List Surat</a>";
+      // echo "Surat updated successfully, <a href='view2.php'>List Surat</a>";
+      header("Location:view.php");
     }
     ?>
   </body>
