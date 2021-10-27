@@ -1,12 +1,10 @@
 <?php
-//error_reporting(0);
+error_reporting(0);
 $con = new mysqli("localhost", "root", "", "dbsuratfanny");
-
 $tgl = date('d F Y');
 
 $sql = "SELECT * FROM tbl_surat";
 $result = $con->query($sql);
-
 ?>
 
 <!DOCYTYPE html>
@@ -32,8 +30,7 @@ $result = $con->query($sql);
           <td>Jenis Surat</td>
           <td>Tanggal Surat</td>
           <td>TTD Surat</td>
-          <td>ACTION</td>
-          <td>ACTION</td>
+          <td colspan=2>ACTION</td>
         </thead>
         <tbody>
           <?php foreach ($result as $isi) { ?>
@@ -54,11 +51,39 @@ $result = $con->query($sql);
               <td><?= $isi["tgl_surat"]; ?></td>
               <td><?= $isi["ttd_surat"]; ?></td>
               <td><a href="edit.php?id=<?php echo $isi['id']; ?>">Edit</a></td>
-              <td>Delete</td>
+              <td><a href="#" data-bs-toggle="modal" data-bs-target="#deletesurat<?php echo $isi['id']; ?>">Delete</a></td>
             </tr>
+            <div class="example-modal">
+              <div id="deletesurat<?php echo $isi['id'] ?>" class="modal fade" role="dialog" style="display: none;">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <form class="row g-3" method="post" action="delete.php" name="form1">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times</span></button>
+                        <h3 class="modal-title">Konfirmasi Delete Data Surat</h3>
+                      </div>
+                      <div class="modal-body">
+                        <input type="hidden" class="form-control" name="id" value="<?php echo $isi['id']; ?>">
+                        <h4 align="center">Apakah anda yakin ingin menghapus no surat <?php echo $isi['no_surat']; ?>
+                          <strong><span class="grt"></span></strong>?
+                        </h4>
+                      </div>
+                      <div class="modal-footer">
+                        <button id="nodelete" type="button" class="btn btn-danger pull-left" data-bs-dismiss="modal">
+                          Cancel</button>
+                        <button type="submit" class="btn btn-primary" name="delete">Delete</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
           <?php } ?>
         </tbody>
       </table>
+      <?php
+
+      ?>
     </div>
 
   </body>
