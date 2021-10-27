@@ -1,5 +1,5 @@
 <?php
-//error_reporting(0);
+error_reporting(0);
 $con = new mysqli("localhost", "root", "", "dbsuratfanny");
 
 $tgl = date('d F Y');
@@ -35,9 +35,12 @@ if ($isi['jenis_surat'] == 1) {
           <h2 align="center">Tambah Surat</h2>
           <div class="card-body">
             <form class="row g-3" method="post" action="edit.php?id=<?php echo $isi['id'] ?>" name="form1">
+              <div class="col-md-12">
+                <input type="hidden" class="form-control" name="id" value="<?php echo $isi['id'] ?>">
+              </div>
               <div class="col-md-6">
                 <label for="noSurat" class="form-label">Nomor Surat</label>
-                <input type="text" class="form-control" id="noSurat" name="noSurat" value="<?php echo $isi['no_surat'] ?>">
+                <input type="text" class="form-control" name="noSurat" value="<?php echo $isi['no_surat'] ?>">
               </div>
               <div class="col-md-4">
                 <label for="jenisSurat" class="form-label">Jenis Surat</label>
@@ -50,19 +53,19 @@ if ($isi['jenis_surat'] == 1) {
               </div>
               <div class="col-md-6">
                 <label for="tglSurat" class="form-label">Tanggal Surat</label>
-                <input type="date" class="form-control" id="tglSurat" name="tglSurat" value="<?php echo $isi['tgl_surat'] ?>">
+                <input type="date" class="form-control" name="tglSurat" value="<?php echo $isi['tgl_surat'] ?>">
               </div>
               <div class="col-12">
                 <label for="ttdSurat" class="form-label">Pembuat Surat</label>
-                <input type="text" class="form-control" id="ttdSurat" name="ttdSurat" value="<?php echo $isi['ttd_surat'] ?>">
+                <input type="text" class="form-control" name="ttdSurat" value="<?php echo $isi['ttd_surat'] ?>">
               </div>
               <div class="col-md-6">
                 <label for="ttdMengetahui" class="form-label">TTD Mengetahui</label>
-                <input type="text" class="form-control" id="ttdMengetahui" name="ttdMengetahui" value="<?php echo $isi['ttd_mengetahui'] ?>">
+                <input type="text" class="form-control" name="ttdMengetahui" value="<?php echo $isi['ttd_mengetahui'] ?>">
               </div>
               <div class="col-md-6">
                 <label for="ttdMenyetujui" class="form-label">TTD Menyetujui</label>
-                <input type="text" class="form-control" id="ttdMenyetujui" name="ttdMenyetujui" value="<?php echo $isi['ttd_menyetujui'] ?>">
+                <input type="text" class="form-control" name="ttdMenyetujui" value="<?php echo $isi['ttd_menyetujui'] ?>">
               </div>
               <div class="col-1">
                 <button type="submit" class="btn btn-primary" name="update">Update</button>
@@ -77,6 +80,7 @@ if ($isi['jenis_surat'] == 1) {
     </div>
     <?php
     if (isset($_POST['update'])) {
+      $id = $_POST['id'];
       $no_surat = $_POST['noSurat'];
       $jenis_surat = $_POST['jenisSurat'];
       $tgl_surat = $_POST['tglSurat'];
