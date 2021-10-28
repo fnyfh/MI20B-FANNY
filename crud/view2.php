@@ -80,6 +80,7 @@ $result = $con->query($sql);
             </div>
           <?php } ?>
         </tbody>
+        <p><a href="add.php">Tambah Surat</a></p>
       </table>
       <?php
 
