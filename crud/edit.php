@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+// error_reporting(0);
 $con = new mysqli("localhost", "root", "", "dbsuratfanny");
 
 $tgl = date('d F Y');
@@ -93,8 +93,8 @@ if ($isi['jenis_surat'] == 1) {
       `ttd_menyetujui`='$ttd_menyetujui'
       where `id` = '$id'");
 
-      // echo "Surat updated successfully, <a href='view2.php'>List Surat</a>";
-      header("Location:view.php");
+      echo "Surat updated successfully, <a href='view2.php'>List Surat</a>";
+      header("Location:view2.php");
     }
     ?>
   </body>
