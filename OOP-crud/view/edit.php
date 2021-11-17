@@ -1,13 +1,13 @@
 <?php
-// error_reporting(0);
+error_reporting(0);
 include '../controller/Anggota.php';
 
 $ctrl = new Anggota();
 $id = $_GET['id'];
 // $query = mysqli_query($con, "SELECT * FROM tbl_anggota where id = '$id'");
-$hasil = $ctrl->getData($id);
-$query2 = mysqli_query($con, "SELECT * FROM tbl_jurusan");
-$query3 = mysqli_query($con, "SELECT * FROM tbl_jabatan");
+$isiAnggota = $ctrl->getData($id);
+$query2 = $ctrl->getJenisData($id);
+$query3 = $ctrl->getJenisData2($id);
 
 ?>
 
@@ -33,7 +33,7 @@ $query3 = mysqli_query($con, "SELECT * FROM tbl_jabatan");
         <row>
           <div class="card">
             <div class="card-body">
-              <form class="row g-3" method="post" action="edit.php?id=<?php echo $isiAnggota['id'] ?>" name="form1">
+              <form class="row g-3" method="post" action="<?php $ctrl->simpanData();?>" name="form1">
                 <div class="col-md-12">
                   <input type="hidden" class="form-control" name="id" value="<?php echo $isiAnggota['id'] ?>">
                 </div>
@@ -91,7 +91,7 @@ $query3 = mysqli_query($con, "SELECT * FROM tbl_jabatan");
                 </div>
                 <div class="d-grid gap-2 d-md-block">
                   <button type="submit" class="btn btn-primary" name="update">Update</button>
-                  <a href="view.php" class="btn btn-danger" name="batal">Cancel</a>
+                  <a href="content.php" class="btn btn-danger" name="batal">Cancel</a>
                 </div>
               </form>
             </div>
