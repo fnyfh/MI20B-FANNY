@@ -26,21 +26,21 @@ $hasil = $ctrl->index();
     // echo $pesan;
     if ($pesan == 'success' && $frm == 'add') {
     ?>
-      <!-- <div class="alert alert-success alert-dismissible fade show" role="alert">
+     <!--  <div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Selamat!</strong> Anda berhasil menambahkan.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
+      </div> -->
     <?php
     } else  if ($pesan == 'success' && $frm == 'edit') {
     ?>
-      <div class="alert alert-primary alert-dismissible fade show" role="alert">
+      <!-- <div class="alert alert-primary alert-dismissible fade show" role="alert">
         <strong>Selamat!</strong> Anda berhasil update.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
+      </div> -->
     <?php
     } else  if ($pesan == 'success' && $frm == 'del') {
     ?>
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <!-- <div class="alert alert-danger alert-dismissible fade show" role="alert">
         <strong>Selamat!</strong> Data dihapus.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div> -->
@@ -51,9 +51,6 @@ $hasil = $ctrl->index();
     <h1 align="center">DATA ANGGOTA
       <!-- LP3I COMPUTER CLUB 2021/2022 -->
     </h1>
-    <div align="left">
-      <a href="add.php" class="btn btn-primary" title="Tambah"><i class="fa fa-plus"></i> Tambah</a>
-    </div>
     <br>
     <table class="table table-bordered table-hover">
       <thead class="table-dark text-center">
@@ -144,6 +141,10 @@ $hasil = $ctrl->index();
         ?>
       </tbody>
     </table>
+    <div class="col-md-4">
+      <a href="add.php" class="btn btn-primary" title="Tambah"><i class="fa fa-plus"></i> Tambah</a>
+      <a href="#" class="btn btn-primary" title="keluar"><i class="fa fa-plus"></i> Log Out</a>
+    </div>
   </div>
 </body>
 <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous">
