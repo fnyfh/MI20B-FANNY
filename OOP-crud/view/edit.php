@@ -33,7 +33,7 @@ $query3 = $ctrl->getJenisData2($id);
         <row>
           <div class="card">
             <div class="card-body">
-              <form class="row g-3" method="post" action="<?php $ctrl->simpanData();?>" name="form1">
+              <form class="row g-3" method="post" action="<?php echo $ctrl->updateData($id);?>" name="form1">
                 <div class="col-md-12">
                   <input type="hidden" class="form-control" name="id" value="<?php echo $isiAnggota['id'] ?>">
                 </div>
