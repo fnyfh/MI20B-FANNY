@@ -85,7 +85,7 @@ class Anggota {
 				'jabatan' => $jabatan,
 			);
 
-			$result = $this->model->updateData($data);
+			$result = $this->model->updateData($data, $id);
 
 			if ($result) {
 				header("Location:content.php?pesan=success&frm=add");
