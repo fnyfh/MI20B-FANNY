@@ -37,22 +37,23 @@ class Anggota_model{
 		//looping untuk mengambil isi dari kolom/values
 		foreach ($data as $arrayIndex => $row) {
 			$params = array();
-			foreach($row as $columnNames => $columnValue){
-				$param = ":".$columnNames.$arrayIndex;
+			foreach($row as $columnName => $columnValue){
+				$param = ":". $columnName . $arrayIndex;
 				$params[] = $param;
 				$toBind[$param] = $columnValue;
 			}
-			$rowsSQL[] = "(".implode(",", $param).")";
+			$rowsSQL[] = "(".implode(", ", $params).")";
 		}
-		$sql = "INSERT INTO tbl_anggota (".implode(",", $columnNames).") VALUES".implode(",", $rowsSQL);
+		$sql = "INSERT INTO tbl_anggota (" . implode(", ", $columnNames) . ") VALUES" .implode(", ", $rowsSQL);
 		$row = $this->db->prepare($sql);
 		//Bind our values.
 		foreach($toBind as $param => $val){
-			$row->bindValue($param, $val);
+			$row ->bindValue($param, $val);
 		}
+		return $row->execute();
 	}
 	function updateData($data, $id){
-		$setPart =array();
+		$setPart = array();
 		foreach ($data as $key => $value) {
 			$setPart[] = $key."=:".$key;
 		}
