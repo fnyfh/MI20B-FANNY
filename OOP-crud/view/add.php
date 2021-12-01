@@ -29,7 +29,7 @@ $query3 = $ctrl->getJenisData2($id);
       <div class="card">
         <h2 align="center">Tambah Anggota</h2>
         <div class="card-body">
-          <form class="row g-3" method="post" action="<?php $ctrl->simpanData();?>" name="form1">
+          <form class="row g-3" method="post" action="<?php echo $ctrl->simpanData();?>" name="form1">
             <div class="col-md-6">
               <label for="noSurat" class="form-label">NIM</label>
               <input type="text" class="form-control" id="nim" name="nim" required>
@@ -73,7 +73,7 @@ $query3 = $ctrl->getJenisData2($id);
               </select>
             </div>
             <div class="d-grid gap-2 d-md-block">
-              <button type="submit" class="btn btn-primary" name="tambah">Add</button>
+              <button type="submit" class="btn btn-primary" name="simpan">Add</button>
               <a href="content.php" class="btn btn-danger" name="batal">Cancel</a>
             </div>
           </form>
