@@ -67,6 +67,33 @@ class Anggota {
 			}
 		}
 	}
+	function updateData($id){
+		if(isset($_POST['update'])){
+			$nim = $_POST['nim'];
+			$nama = $_POST['nama'];
+			$noHp = $_POST['no_hp'];
+			$alamat = $_POST['alamat'];
+			$jurusan = $_POST['jurusan'];
+			$jabatan = $_POST['jabatan'];
+
+			$data = array(
+				'nim' => $nim,
+				'nama' => $nama,
+				'no_hp' => $noHp,
+				'alamat' => $alamat,
+				'jurusan' => $jurusan,
+				'jabatan' => $jabatan,
+			);
+
+			$result = $this->model->updateData($data);
+
+			if ($result) {
+				header("Location:content.php?pesan=success&frm=add");
+			}else{
+				header("Location:content.php?pesan=gagal&frm=add");
+			}
+		}
+	}
 }
 
 ?>
