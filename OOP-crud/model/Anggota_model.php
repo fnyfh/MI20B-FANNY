@@ -57,7 +57,7 @@ class Anggota_model{
 		foreach ($data as $key => $value) {
 			$setPart[] = $key."=:".$key;
 		}
-		$sql = "UPDATE tbl_anggota SET ".implode(',', $setPart)."WHERE id = :id";
+		$sql = "UPDATE tbl_anggota SET ".implode(',', $setPart)." WHERE id = :id";
 		$row = $this->db->prepare($sql);
 		//bind our values
 		$row->bindValue(':id',$id); //where
