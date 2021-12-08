@@ -121,8 +121,8 @@ $query3 = $ctrl->getJenisData2($id);
         // var_dump($id);
         // die;
         if (isset($_POST['update'])) {
-          echo "<script>window.location.href='view.php?pesan=success&frm=edit';</script>";
-          header("Location:view.php?pesan=success&&frm=edit");
+          echo "<script>window.location.href='content.php?pesan=success&frm=edit';</script>";
+          header("Location:content.php?pesan=success&&frm=edit");
           exit;
         }
       }
