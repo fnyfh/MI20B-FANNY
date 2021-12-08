@@ -12,9 +12,6 @@ class Auth {
 		$this->model = new Auth_model($conn);
 	}
 
-	function index(){
-		
-	}
 	function login(){
 		if (isset($_POST['login'])) {
 			$user = strip_tags($_POST['user']);
@@ -22,13 +19,14 @@ class Auth {
         	$result = $this->model->proses_login($user,$pass);
 
         	if ($result == 'gagal') {
-        		header("Location:login.php");
+        		header("Location:index.php?pesan=failed&&frm=login");
         	}else{
         		session_start();
         		$_SESSION['nama_pengguna'] = $result['nama_pengguna'];
         		$_SESSION['username'] = $result['username'];
-        		header("Location:content.php");
+        		header("Location:content.php?pesan=success&&frm=login");
         	}
+        	
 		}
 	}
 }
