@@ -13,8 +13,14 @@ class Anggota {
 	}
 
 	function index(){
-		$hasil = $this->model->tampil_data();
-	return $hasil;
+		session_start();
+
+		if (!empty($_SESSION)) {
+			$hasil = $this->model->tampil_data();
+			return $hasil;
+		}else{
+			header("Location:index.php");
+		}
 	}
 	function getData($id){
 		$hasil = $this->model->getData($id);
@@ -88,10 +94,17 @@ class Anggota {
 			$result = $this->model->updateData($data, $id);
 
 			if ($result) {
-				header("Location:content.php?pesan=success&frm=add");
+				header("Location:content.php?pesan=success&frm=edit");
 			}else{
-				header("Location:content.php?pesan=gagal&frm=add");
+				header("Location:content.php?pesan=gagal&frm=edit");
 			}
+		}
+	}
+	function Logout(){
+		if (isset($_POST['logout'])) {
+			session_start();
+			session_destroy();
+			header("Location:index.php?pesan=success&&frm=logout");
 		}
 	}
 }
