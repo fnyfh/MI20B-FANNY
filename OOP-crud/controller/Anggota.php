@@ -28,7 +28,7 @@ class Anggota {
 	}
 	function getJenisData(){
 		$hasil = $this->model->getJenisData();
-	return $hasil;
+	echo json_encode($hasil);
 	}
 	function getJenisData2(){
 		$hasil = $this->model->getJenisData2();
@@ -105,6 +105,18 @@ class Anggota {
 			session_start();
 			session_destroy();
 			header("Location:index.php?pesan=success&&frm=logout");
+		}
+	}
+	function simpanJurusan(){
+		$jurusan = $_POST['jurusan'];
+		$data[] = array(
+			'jurusan' => $jurusan,
+		);
+		$result = $this->model->simpanData($data);
+		if($result){
+			echo'200';
+		}else{
+			echo'300';
 		}
 	}
 }
