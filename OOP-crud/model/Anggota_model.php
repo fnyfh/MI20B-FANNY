@@ -27,6 +27,31 @@ class Anggota_model{
 		$row->execute();
 		return $hasil = $row->fetchAll();
 	}
+	function simpanJurusan($data){
+		//buat array untuk isi value insert sumber kode
+		$rowsSQL = array();
+		//buat untuk param prepared Statement
+		$toBind = array();
+		//list nama kolom
+		$columnNames = array_keys($data[0]);
+		//looping untuk mengambil isi dari kolom/values
+		foreach ($data as $arrayIndex => $row) {
+			$params = array();
+			foreach($row as $columnName => $columnValue){
+				$param = ":". $columnName . $arrayIndex;
+				$params[] = $param;
+				$toBind[$param] = $columnValue;
+			}
+			$rowsSQL[] = "(".implode(", ", $params).")";
+		}
+		$sql = "INSERT INTO tbl_jurusan (" . implode(", ", $columnNames) . ") VALUES" .implode(", ", $rowsSQL);
+		$row = $this->db->prepare($sql);
+		//Bind our values.
+		foreach($toBind as $param => $val){
+			$row ->bindValue($param, $val);
+		}
+		return $row->execute();
+	}
 	function simpanData($data){
 		//buat array untuk isi value insert sumber kode
 		$rowsSQL = array();
