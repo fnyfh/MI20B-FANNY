@@ -20,6 +20,7 @@ class Auth_model {
             return 'gagal';
         }
     }
+    
 }
 
 ?>
