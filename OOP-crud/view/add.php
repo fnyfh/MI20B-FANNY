@@ -1,4 +1,4 @@
-<?php
+  <?php
 error_reporting(0);
 include '../controller/Anggota.php';
 
@@ -57,7 +57,7 @@ $query3 = $ctrl->getJenisData2($id);
         });
       }
 
-    $('#ModalJenis').modal('hide');
+    /*$('#ModalJenis').modal('hide');
     var dataForm = $('#formJenisSurat').serialize();
     $.ajax({
     type  : 'POST',
@@ -104,7 +104,7 @@ $query3 = $ctrl->getJenisData2($id);
               console.log(response);
 
           }
-    });
+    });*/
 
   });  
   </script>
@@ -137,7 +137,7 @@ $query3 = $ctrl->getJenisData2($id);
               </select>
             </div>
             <div class="col-md-6">
-              <a href="#" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#jurusan" ><i class="bi bi-plus"></i></a>
+              <a href="#" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#modalData" ><i class="bi bi-plus"></i></a>
             </div>
             <div class="col-md-6">
               <label for="jabatan" class="form-label">Jabatan</label>
@@ -171,10 +171,10 @@ $query3 = $ctrl->getJenisData2($id);
                 </div>
                 <div class="modal-body">
                   <label for="jurusan" class="form-label">Jurusan</label>
-                  <input type="text" class="form-control" id="jurusan" name="Jurusan" placeholder="Jurusan">
+                  <input type="text" class="form-control" id="jurusanInput" name="jurusanInput" placeholder="Jurusan">
                 </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-danger btn-block" id="btnSimpan">Simpan</button>
+                    <button type="submit" class="btn btn-danger btn-block" id="btnSimpan">Simpan</button>
                     <button type="button" class="btn btn-primary pull-left" data-bs-dismiss="modal">Cancel</button>
                   </div>
               </form>
@@ -184,6 +184,29 @@ $query3 = $ctrl->getJenisData2($id);
     </div>
   
 </body>
+
+<script>
+  $('#formJurusan').on('submit',function(e){
+    e.preventDefault();
+    let jurusan = $("#jurusanInput").val();
+
+    $.ajax({
+      url: 'api.php',
+      type: 'POST',
+      data: {
+        jurusan: jurusan,
+      },
+      dataType: 'json',
+      success: function(data){
+        console.log(data)
+      },
+      error: function(data){
+        console.log(data)
+      }
+    });
+  });
+</script>
+
 <!-- <script src="../asset/js/bootstrap.min.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous">
 </script>
